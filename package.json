@@ -23,7 +23,7 @@
     "dependencies": {
       "postcss": "^8.4.33",
       "postcss-simple-vars": "^7.0.1",
-      "cross-env"
+      "cross-env": "10.0.0"
     }
   }
   
