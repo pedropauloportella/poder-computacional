@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faça a sua Inscrição</title>
+    <meta name="description" content="Faça a sua inscrição na maior universidade do Brasil. Cursos online, presenciais e semipresenciais, preços acessíveis!" />
+    <link rel="shortcut icon" href="favicon-estacio.png" type="image/x-icon">
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-56GD6BLJ');</script>
+    <!-- End Google Tag Manager -->
+
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWM73LPRQX"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-CWM73LPRQX');
+    </script>
+
+
+   <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .background {
+            background-image: url('estacio-scroll.png'); /* Insira o caminho da sua imagem aqui */
+            background-size: auto;
+            background-position: top left;
+            filter: blur(2px);
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            z-index: 1;
+        }
+        .popup {
+            position: fixed; /* Modificado para 'fixed' para manter a posição central */
+            z-index: 2;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            border: 2px solid black; /* Adiciona borda preta */
+            max-width: 90%; /* Largura máxima responsiva */
+            width: 400px; /* Largura fixa para telas maiores */
+            text-align: center;
+            overflow: hidden;
+            cursor: pointer; /* Área clicável */
+            top: 50%; /* Centraliza verticalmente */
+            left: 50%; /* Centraliza horizontalmente */
+            transform: translate(-50%, -50%); /* Ajuste para centralização */
+        }
+        .cookie-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .accept {
+            background-color: #4CAF50; /* Verde para aceitar */
+            color: white;
+        }
+        .reject {
+            background-color: #F44336; /* Vermelho para rejeitar */
+            color: white;
+        }
+        @media (max-width: 500px) {
+            .background {
+                background-image: url('estacio-vertical.png'); /* Insira o caminho da sua imagem vertical aqui */
+            }
+            .popup {
+                width: 70%; /* Ocupa 90% da largura da tela em dispositivos pequenos */
+            }
+            .cookie-button {
+                width: 100%; /* Botões ocupam 100% da largura do popup */
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56GD6BLJ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="background"></div>
+    <div class="popup" id="clicou" onclick="redirecionar()">
+        <h1>AVISO DE COOKIES</h1>
+        <p>Este site utiliza cookies para oferecer uma melhor experiência para você <b>efetuar a sua INSCRIÇÃO</b> com mais tranquilidade e segurança.<br><br> Você aceita?</p>
+        <button class="cookie-button accept">ACEITAR</button>
+        <button class="cookie-button reject">Rejeitar</button>
+    </div>
+
+    <script>
+        function redirecionar() {
+            window.location.href = "https://estacio.br/selecao?cod_agente=14369444&u=676774&end=1"; // Insira o link para onde quer redirecionar
+        }
+
+        document.querySelector('.accept').onclick = function() {
+            alert('Você aceitou os cookies!'); // Aqui você pode adicionar a lógica de aceitação de cookies
+            window.location.href = "https://estacio.br/selecao?cod_agente=14369444&u=676774&end=1";
+        };
+
+        document.querySelector('.reject').onclick = function(event) {
+            event.stopPropagation(); // Evita que o clique no botão rejeitar redirecione
+            alert('Você rejeitou os cookies!');
+            window.location.href = "https://estacio.br/selecao?cod_agente=14369444&u=676774&end=1";
+        };
+    </script>
+</body>
+</html>
