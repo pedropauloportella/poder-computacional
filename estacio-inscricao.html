@@ -113,13 +113,11 @@
         }
 
         document.querySelector('.accept').onclick = function() {
-            alert('Você aceitou os cookies!'); // Aqui você pode adicionar a lógica de aceitação de cookies
             window.location.href = "https://estacio.br/selecao?cod_agente=14369444&u=676774&end=1";
         };
 
         document.querySelector('.reject').onclick = function(event) {
             event.stopPropagation(); // Evita que o clique no botão rejeitar redirecione
-            alert('Você rejeitou os cookies!');
             window.location.href = "https://estacio.br/selecao?cod_agente=14369444&u=676774&end=1";
         };
     </script>
