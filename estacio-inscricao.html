@@ -96,7 +96,7 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <div class="background"></div>
-    <div class="popup" id="clicou" onclick="redirecionar()">
+    <div class="popup" id="clicou" onclick="redirecionar(); ga('send', 'event', 'clicou', 'Clique', this.id);">
         <h1>AVISO DE COOKIES</h1>
         <p>Este site utiliza cookies para oferecer uma melhor experiência para você <b>efetuar a sua INSCRIÇÃO</b> com mais tranquilidade e segurança.<br><br> Você aceita?</p>
         <button class="cookie-button accept">ACEITAR</button>
@@ -106,6 +106,7 @@
     <script>
         function redirecionar() {
             window.location.href = "https://estacio.br/selecao?cod_agente=14369444&u=676774&end=1"; // Insira o link para onde quer redirecionar
+            onclick="ga('send', 'event', 'Botão', 'Clique', this.id);
         }
 
         document.querySelector('.accept').onclick = function() {
