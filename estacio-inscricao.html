@@ -107,18 +107,21 @@
         function redirecionar() {
             //ga('send', 'event', 'Cookie', 'Clique', this.id);
             gtag('event', 'clicou', { event_category: 'COOKIE', event_label: this.id,});
+            gtag('event', 'conversion_event_outbound_click')
+   
 
             window.location.href = "https://estacio.br/selecao?cod_agente=14369444&u=676774&end=1"; // Insira o link para onde quer redirecionar
             
         }
 
         document.querySelector('.accept').onclick = function() {
+            gtag('event', 'conversion_event_outbound_click')
             window.location.href = "https://estacio.br/selecao?cod_agente=14369444&u=676774&end=1";
         };
 
         document.querySelector('.reject').onclick = function(event) {
-            event.stopPropagation(); // Evita que o clique no botão rejeitar redirecione
-            window.location.href = "https://estacio.br/selecao?cod_agente=14369444&u=676774&end=1";
+        gtag('event', 'conversion_event_outbound_click')
+        window.location.href = "https://estacio.br/selecao?cod_agente=14369444&u=676774&end=1";
         };
     </script>
 </body>
