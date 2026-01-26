@@ -107,7 +107,7 @@
         function redirecionar() {
             //ga('send', 'event', 'Cookie', 'Clique', this.id);
             gtag('event', 'clicou', { event_category: 'COOKIE', event_label: this.id,});
-            gtag('event', 'conversion_event_outbound_click')
+            gtag('event', 'conversion_event_outbound_click', {'event_callback': callback,'event_timeout': 2000,})
    
 
             window.location.href = "https://estacio.br/selecao?cod_agente=14369444&u=676774&end=1"; // Insira o link para onde quer redirecionar
@@ -126,3 +126,6 @@
     </script>
 </body>
 </html>
+
+
+
