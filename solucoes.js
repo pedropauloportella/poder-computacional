@@ -1,0 +1,101 @@
+document.documentElement.classList.add('tw-dark');
+const rootPath=location.pathname.includes('/solucoes/')?'../':'./';
+const photos={
+'diagnostico-eficiencia-operacional-perdas-lucro':'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85',
+'solucao-problemas-causa-raiz-lean-six-sigma':'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=85',
+'5s-organizacao-produtividade-empresa':'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85',
+'lean-six-sigma-eliminacao-desperdicios':'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=85',
+'reducao-setup-paradas-smed-capacidade':'https://images.unsplash.com/photo-1565610222536-ef125c59da2e?auto=format&fit=crop&w=1600&q=85',
+'dmaic-lean-six-sigma-melhoria-performance':'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85',
+'excelencia-operacional-estrategica-indicadores':'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85',
+'kaizen-melhoria-continua-empresa':'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=85',
+'academia-lean-six-sigma-equipes':'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1600&q=85',
+'confiabilidade-manutencao-reducao-paradas':'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=85',
+'trt-responsabilidade-tecnica-eletronica-conformidade':'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=85'};
+const solutions=[
+['diagnostico-eficiencia-operacional-perdas-lucro','Onde sua empresa está perdendo dinheiro, tempo e capacidade?','Diagnóstico de eficiência operacional para localizar perdas e priorizar oportunidades.','Descobrir minhas perdas'],
+['solucao-problemas-causa-raiz-lean-six-sigma','Seu problema volta todo mês? Descubra a causa-raiz.','Elimine recorrências, retrabalho, reclamações e falhas com método.','Eliminar a causa-raiz'],
+['5s-organizacao-produtividade-empresa','Quanto dinheiro sua empresa perde por desorganização?','5S, gestão visual e padrões para aumentar produtividade.','Aumentar produtividade'],
+['lean-six-sigma-eliminacao-desperdicios','Elimine os desperdícios que tornam sua empresa lenta e cara.','Lean Six Sigma para reduzir espera, excesso, movimentação e retrabalho.','Eliminar desperdícios'],
+['reducao-setup-paradas-smed-capacidade','Sua operação fica parada? Recupere capacidade com SMED.','Reduza setup e transforme tempo improdutivo em capacidade.','Recuperar capacidade'],
+['dmaic-lean-six-sigma-melhoria-performance','Existe um problema caro que ninguém explica? Ataque com dados.','DMAIC para problemas complexos que exigem medição e análise.','Resolver com dados'],
+['excelencia-operacional-estrategica-indicadores','Melhorar processos não basta: construa excelência operacional.','Conecte estratégia, indicadores, governança e projetos.','Construir excelência'],
+['kaizen-melhoria-continua-empresa','Transforme problemas do dia a dia em melhoria contínua.','Kaizen para criar disciplina e velocidade de melhoria.','Criar melhoria contínua'],
+['academia-lean-six-sigma-equipes','Faça sua equipe aprender a resolver problemas.','Desenvolva competências internas em Lean Six Sigma.','Desenvolver equipe'],
+['confiabilidade-manutencao-reducao-paradas','Quanto custam as falhas e paradas dos seus equipamentos?','Confiabilidade para reduzir falhas, MTTR e indisponibilidade.','Reduzir paradas'],
+['trt-responsabilidade-tecnica-eletronica-conformidade','Seu serviço técnico precisa de TRT e responsabilidade formal?','Formalização, acompanhamento e documentação profissional.','Formalizar serviço']];
+
+const deliverableDescriptions={
+'Problem Statement e escopo':'Definição objetiva do problema, limites do projeto, cliente afetado e resultado esperado.',
+'baseline e estratificação':'Linha de base e segmentação dos dados para enxergar frequência, impacto e padrões do problema.',
+'Pareto, Ishikawa e 5 Porquês':'Ferramentas estruturadas para organizar hipóteses e direcionar a investigação das causas.',
+'hipóteses e evidências de causa':'Hipóteses testáveis e evidências para separar causas prováveis de simples sintomas.',
+'plano de ação corretiva e preventiva':'Ações com responsáveis, prazos e critérios para eliminar a causa e evitar recorrência.',
+'verificação de eficácia e padronização':'Confirmação dos resultados e incorporação da melhoria ao padrão operacional.',
+'radiografia executiva':'Visão consolidada das principais perdas, riscos, oportunidades e prioridades do negócio.',
+'mapa de processos e perdas':'Representação dos processos críticos e dos pontos onde tempo, recursos ou capacidade são consumidos.',
+'baseline de indicadores disponíveis':'Registro do desempenho atual para comparar resultados antes e depois das melhorias.',
+'Pareto de oportunidades':'Priorização das oportunidades com maior impacto potencial e evidência disponível.',
+'matriz Impacto × Esforço × Risco':'Classificação das iniciativas para concentrar recursos nas oportunidades mais atrativas.',
+'roadmap de melhoria priorizado':'Sequência recomendada de iniciativas, dependências e próximos passos para execução.',
+'diagnóstico e auditoria 5S':'Avaliação estruturada do ambiente, organização, padrões e disciplina operacional.',
+'mapa de áreas críticas':'Identificação dos ambientes e pontos de trabalho onde a desorganização mais afeta o resultado.',
+'gestão visual':'Sinais, padrões e referências visuais que tornam desvios e condições anormais rapidamente perceptíveis.',
+'padrões e checklists':'Instruções e verificações simples para reduzir variabilidade e sustentar o novo padrão.',
+'indicadores e auditorias':'Métricas e rotinas para acompanhar aderência, evolução e sustentação do 5S.',
+'plano de sustentação':'Responsáveis, frequência e mecanismos de acompanhamento para impedir o retorno dos antigos padrões.',
+'mapa do estado atual':'Visão do fluxo atual, tempos, filas, estoques e atividades que não agregam valor.',
+'identificação e quantificação de desperdícios':'Classificação e estimativa do impacto dos desperdícios encontrados no processo.',
+'gargalos e restrições':'Localização dos pontos que limitam fluxo, capacidade ou velocidade da operação.',
+'estado futuro':'Desenho de um fluxo futuro mais simples, rápido e orientado ao valor para o cliente.',
+'plano de transformação e indicadores':'Plano de implementação com metas e indicadores para acompanhar a evolução do fluxo.',
+'diagnóstico de setup':'Levantamento das etapas, tempos e oportunidades existentes durante trocas e preparações.',
+'cronoanálise':'Medição detalhada das atividades para localizar onde o tempo de setup é consumido.',
+'SMED Worksheet':'Estruturação das atividades internas e externas e das oportunidades de conversão e simplificação.',
+'Spaghetti Diagram':'Visualização dos deslocamentos para identificar movimentos desnecessários durante o setup.',
+'checklists e padrão operacional':'Sequência padronizada para executar a preparação com menos variação e interrupções.',
+'medição antes e depois':'Comparação objetiva do tempo de setup e da capacidade recuperada após a intervenção.',
+'Project Charter':'Documento que define problema, meta, escopo, equipe, prazo e justificativa do projeto.',
+'plano de coleta e baseline':'Plano de medição e referência inicial para avaliar a magnitude e a variabilidade do problema.',
+'análise de capacidade e estatística quando aplicável':'Análises quantitativas selecionadas conforme dados, processo e decisão necessária.',
+'causas validadas':'Causas sustentadas por evidências e análises adequadas ao problema investigado.',
+'FMEA, piloto e plano de melhoria':'Avaliação de riscos, teste das soluções e organização da implementação da melhoria.',
+'Control Plan e dashboard':'Controles e indicadores para acompanhar desempenho e preservar os ganhos.',
+'Operational Excellence Assessment':'Avaliação da maturidade e das oportunidades de excelência operacional da organização.',
+'mapa estratégico e árvore de indicadores':'Conexão entre objetivos estratégicos, indicadores críticos, metas e processos.',
+'portfólio de projetos priorizado':'Carteira de iniciativas organizada por impacto, esforço, risco e alinhamento estratégico.',
+'business cases e metas':'Estimativas de resultado e metas que permitem decidir e acompanhar o retorno das iniciativas.',
+'governança e rotina de revisão executiva':'Rituais, responsabilidades e fóruns para acelerar decisões e sustentar a performance.',
+'roadmap de transformação':'Sequenciamento das iniciativas estratégicas para construir evolução operacional sustentável.',
+'diagnóstico de cultura de melhoria':'Avaliação da capacidade atual da equipe para identificar, executar e sustentar melhorias.',
+'Kaizen Charter':'Definição do desafio, escopo, equipe, metas e critérios de sucesso da iniciativa Kaizen.',
+'Gemba Walk':'Observação direta do trabalho para identificar fatos, desperdícios e oportunidades no processo.',
+'banco de oportunidades priorizado':'Registro estruturado das oportunidades de melhoria com critérios de priorização.',
+'A3 e Kaizen Events':'Métodos visuais e eventos focados para transformar problemas em ações e resultados.',
+'indicadores e rotina de sustentação':'Métricas e cadência de acompanhamento para garantir que os ganhos permaneçam.',
+'matriz de competências':'Mapa das capacidades necessárias e do nível atual de cada participante.',
+'trilhas de aprendizagem':'Percursos de formação organizados conforme funções, competências e objetivos do negócio.',
+'workshops e cases':'Aprendizagem prática baseada em situações reais e desafios relevantes da organização.',
+'templates Lean Six Sigma':'Modelos prontos para estruturar projetos, análises, planos e controles de melhoria.',
+'projetos supervisionados':'Aplicação das ferramentas em problemas reais com orientação durante a execução.',
+'avaliação e certificação conforme o programa':'Avaliação da aprendizagem e certificação quando prevista no programa contratado.',
+'Asset Performance Assessment':'Avaliação do desempenho, criticidade e riscos dos ativos mais relevantes.',
+'matriz de criticidade':'Classificação dos ativos conforme impacto, risco e consequência de suas falhas.',
+'Pareto de falhas':'Priorização dos modos de falha que mais contribuem para indisponibilidade e perdas.',
+'dashboards MTBF, MTTR e disponibilidade':'Indicadores para acompanhar frequência de falhas, tempo de reparo e disponibilidade.',
+'FMEA de equipamentos':'Análise dos modos de falha e dos riscos para orientar ações de confiabilidade.',
+'plano de manutenção':'Estratégia e rotinas de manutenção alinhadas à criticidade e ao histórico dos ativos.',
+'TRT Express':'Análise do serviço, enquadramento profissional aplicável e organização para emissão do TRT.',
+'TRT + acompanhamento':'Registros, visitas e acompanhamento técnico conforme escopo contratado.',
+'TRT + fiscalização + dossiê':'Inspeções, evidências, não conformidades, recomendações e documentação organizada.',
+'Dossiê de Responsabilidade Técnica':'Conjunto rastreável de escopo, TRT, registros e evidências do serviço técnico.'};
+
+const deliverableIcons=['bi-clipboard2-check','bi-bar-chart-line','bi-search','bi-diagram-3','bi-check2-circle','bi-shield-check','bi-bullseye','bi-map','bi-speedometer2','bi-kanban','bi-graph-up-arrow','bi-arrow-repeat'];
+
+function renderHeader(){const h=document.createElement('header');h.className='lg:tw-px-4 tw-max-w-[100vw] max-lg:tw-top-0 tw-fixed tw-top-4 lg:tw-left-1/2 lg:tw--translate-x-1/2 tw-z-20 tw-flex tw-h-[60px] tw-w-full tw-text-gray-700 tw-bg-white dark:tw-text-gray-200 dark:tw-bg-[#17181b] tw-px-[3%] tw-rounded-md lg:tw-max-w-5xl tw-shadow-md dark:tw-shadow-gray-700 lg:tw-justify-around lg:!tw-backdrop-blur-lg lg:tw-opacity-[0.99]';h.innerHTML=`<a class="tw-flex tw-p-[4px] tw-gap-2 tw-place-items-center" href="${rootPath}index.html"><div class="tw-h-[30px] tw-max-w-[100px]"><img src="${rootPath}assets/logo/logo.png" alt="Poder Computacional" class="tw-object-contain tw-h-full tw-w-full dark:tw-invert"></div><span class="tw-uppercase tw-text-base tw-font-medium">PC</span></a><div class="collapsible-header animated-collapse max-lg:tw-shadow-md" id="collapsed-header-items"><nav class="tw-relative tw-flex tw-h-full max-lg:tw-h-max tw-w-max tw-gap-5 tw-text-base max-lg:tw-mt-[30px] max-lg:tw-flex-col max-lg:tw-gap-5 lg:tw-mx-auto tw-place-items-center"><a class="header-links" href="#">API</a><a class="header-links" href="${rootPath}index.html#blog">Blog</a><a class="header-links" href="${rootPath}solucoes.html">Solutions</a><div class="tw-relative tw-flex tw-flex-col tw-place-items-center"><div id="nav-dropdown-toggle-0" class="max-lg:tw-max-w-fit tw-flex header-links tw-gap-1 tw-place-items-center"><span>Features</span><i class="tw-text-sm bi bi-chevron-down"></i></div><nav id="nav-dropdown-list-0" data-open="false" class="tw-scale-0 tw-opacity-0 lg:tw-fixed tw-flex lg:tw-top-[80px] lg:tw-left-1/2 lg:tw--translate-x-1/2 tw-w-[90%] tw-rounded-lg max-lg:tw-h-0 max-lg:tw-w-0 lg:tw-h-[450px] tw-overflow-hidden tw-bg-white dark:tw-bg-[#17181B] tw-duration-300 tw-transition-opacity tw-transition-height tw-shadow-lg tw-p-4"><div class="tw-grid max-xl:tw-flex max-xl:tw-flex-col tw-justify-around tw-grid-cols-2 tw-w-full"><a class="header-links tw-flex tw-text-left tw-gap-4 !tw-p-4" href="#"><div class="tw-font-semibold tw-text-3xl"><i class="bi bi-list-columns-reverse"></i></div><div><div class="tw-text-lg tw-font-medium">Prompt library</div><p>Comes packed with pre-made prompt templates</p></div></a><a class="header-links tw-flex tw-text-left tw-gap-4 !tw-p-4" href="#"><div class="tw-font-semibold tw-text-3xl"><i class="bi bi-grid-1x2-fill"></i></div><div><div class="tw-text-lg tw-font-medium">Unified Interface</div><p>Test multiple AI models in one interface</p></div></a><a class="header-links tw-flex tw-text-left tw-gap-4 !tw-p-4" href="#"><div class="tw-font-semibold tw-text-3xl"><i class="bi bi-globe"></i></div><div><div class="tw-text-lg tw-font-medium">Realtime web search</div><p>Search the internet in realtime</p></div></a><a class="header-links tw-flex tw-text-left tw-gap-4 !tw-p-4" href="#"><div class="tw-font-semibold tw-text-3xl"><i class="bi bi-image-fill"></i></div><div><div class="tw-text-lg tw-font-medium">Image generation</div><p>Generate images from prompts</p></div></a></div></nav></div><a class="header-links" href="${rootPath}index.html#pricing">Pricing</a></nav><div class="lg:tw-mx-4 tw-flex tw-place-items-center tw-gap-[20px]"><button type="button" onclick="toggleSolutionsMode()" class="header-links" title="toggle-theme"><i class="bi bi-sun" id="toggle-mode-icon"></i></button><a href="#diagnostico" class="btn"><span>Diagnóstico</span><i class="bi bi-arrow-right"></i></a></div></div><button class="bi bi-list tw-absolute tw-right-3 tw-top-3 tw-z-50 tw-text-3xl tw-text-gray-500 lg:tw-hidden" onclick="toggleSolutionsHeader()" aria-label="menu"></button>`;document.body.prepend(h);const t=h.querySelector('#nav-dropdown-toggle-0'),m=h.querySelector('#nav-dropdown-list-0');t.addEventListener('click',()=>{const o=m.dataset.open==='true';m.dataset.open=String(!o);m.classList.toggle('tw-opacity-100',!o);m.classList.toggle('tw-scale-100',!o)});}
+function toggleSolutionsHeader(){const h=document.getElementById('collapsed-header-items');if(!h)return;h.classList.toggle('max-lg:!tw-opacity-100');h.classList.toggle('tw-min-h-[90vh]');h.style.height=h.style.height?'0vh':'90vh';document.body.classList.toggle('modal-open')}
+function toggleSolutionsMode(){document.documentElement.classList.toggle('tw-dark');localStorage.setItem('color-mode',document.documentElement.classList.contains('tw-dark')?'dark':'light')}
+function renderGrid(){const g=document.getElementById('solutions-grid');if(!g)return;g.innerHTML=solutions.map(([slug,title,desc,cta])=>`<article class="card"><img src="${photos[slug]}" alt="${title}" loading="lazy"><div class="card-body"><h3>${title}</h3><p>${desc}</p><a class="read" href="${rootPath}solucoes/${slug}.html">${cta} <i class="bi bi-arrow-right"></i></a></div></article>`).join('')}
+function renderDeliverableCards(){const headings=[...document.querySelectorAll('.article h2')].filter(h=>/^(Entregáveis|O que você recebe|O que a empresa pode receber|O que podemos estruturar|O que a empresa desenvolve)$/i.test(h.textContent.trim()));headings.forEach((heading)=>{const list=heading.nextElementSibling;if(!list||list.tagName!=='UL')return;const wrapper=document.createElement('div');wrapper.className='tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-6 tw-mt-8 tw-place-items-center';[...list.querySelectorAll(':scope > li')].forEach((li,index)=>{const name=li.textContent.trim();const description=deliverableDescriptions[name]||'Entregável estruturado de acordo com o diagnóstico, escopo e objetivo da iniciativa.';const card=document.createElement('div');card.className='reveal-up tw-h-[240px] tw-w-[450px] max-md:tw-w-full';card.innerHTML=`<a href="#" class="tw-flex tw-w-full tw-h-full tw-gap-8 tw-rounded-xl hover:tw-shadow-lg dark:tw-shadow-[#171717] tw-duration-300 tw-transition-all tw-p-8 tw-group/card"><div class="tw-text-4xl max-md:tw-text-2xl"><i class="bi ${deliverableIcons[index%deliverableIcons.length]}"></i></div><div class="tw-flex tw-flex-col tw-gap-4"><h3 class="tw-text-2xl max-md:tw-text-xl">${name}</h3><p class="tw-text-gray-800 dark:tw-text-gray-100 max-md:tw-text-sm">${description}</p><div class="tw-mt-auto tw-flex tw-gap-2 tw-underline tw-underline-offset-4"><span>Ver detalhes</span><i class="bi bi-arrow-up-right group-hover/card:tw--translate-y-1 group-hover/card:tw-translate-x-1 tw-duration-300 tw-transition-transform"></i></div></div></a>`;wrapper.appendChild(card)});list.replaceWith(wrapper)})}
+function setArticlePhoto(){const img=document.querySelector('.hero-image');if(!img)return;const key=location.pathname.split('/').pop().replace('.html','');if(photos[key]){img.src=photos[key];img.loading='eager';}}
+document.addEventListener('DOMContentLoaded',()=>{renderHeader();renderGrid();renderDeliverableCards();setArticlePhoto();});

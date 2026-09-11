@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://podercomputacional.com.br/sitemap.xml
